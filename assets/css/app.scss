@@ -46,6 +46,11 @@ html {
                 border-radius: 9999px;
                 padding: 3px 0;
                 width: 80%;
+
+                @media (max-width: 767px) {
+                    padding: 6px 0;
+                    font-size: 1em;
+                }
             }
 
             input {
