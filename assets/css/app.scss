@@ -1,9 +1,62 @@
 $colorBack : #509399;
+$fontGreyDark : #327C83;
+$colorBack2: #3d4657;
+$colorFont: #D1D3D8;
 
 $firstFont : 'Lato', sans-serif;
 
+.fontGrey { // utiliser pour mettre les dernières lettres en vert
+    color: $colorBack;
+}
+
+.fontGreyHover {
+
+    &:hover {
+        color: $fontGreyDark;
+    }
+}
+
 html {
-    background-color: $colorBack;
-    color: white;
+    background-color: $colorBack2;
+}
+
+#login {
+    width: 100vw;
+    height: 100vh;
+    color: $colorFont;
+    background-color: $colorBack2;
     font-family: $firstFont;
+
+    .box-login {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+  
+        form {
+
+            .fa-clock{
+                color: $colorBack;
+            }
+
+            input,
+            button {
+                border-color: transparent;
+                border-radius: 9999px;
+                padding: 3px 0;
+                width: 80%;
+            }
+
+            input {
+                text-align:center;
+            }
+
+            button {
+                color: white;
+                background: rgb(113,219,153);
+                background: linear-gradient(90deg, rgba(113,219,153,1) 0%, rgba(100,209,195,1) 50%, rgba(88,196,238,1) 100%); 
+            }
+        }
+    }
 }
