@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User  
 {
     /**
      * @ORM\Id()
@@ -25,22 +25,23 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $FirstName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $LastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Email;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+      * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    private $Password;
+    private $password;
 
     public function getId(): ?int
     {
@@ -61,48 +62,48 @@ class User
 
     public function getFirstName(): ?string
     {
-        return $this->FirstName;
+        return $this->firstName;
     }
 
-    public function setFirstName(string $FirstName): self
+    public function setFirstName(string $firstName): self
     {
-        $this->FirstName = $FirstName;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
     public function getLastName(): ?string
     {
-        return $this->LastName;
+        return $this->lastName;
     }
 
-    public function setLastName(string $LastName): self
+    public function setLastName(string $lastName): self
     {
-        $this->LastName = $LastName;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
-
-    public function getPassword(): ?string
+    
+    public function getPassword(): string
     {
-        return $this->Password;
+        return (string) $this->password;
     }
 
-    public function setPassword(string $Password): self
+    public function setPassword(string $password): self
     {
-        $this->Password = $Password;
+        $this->password = $password;
 
         return $this;
     }
