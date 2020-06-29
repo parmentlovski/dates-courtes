@@ -16,10 +16,11 @@ $firstFont : 'Lato', sans-serif;
     }
 }
 
-html {
-    background-color: $colorBack2;
-}
+// html {
+//     background-color: $colorBack2;
+// }
 
+// Page de login
 #login {
     width: 100vw;
     height: 100vh;
@@ -64,4 +65,10 @@ html {
             }
         }
     }
+}
+
+// Page d'enregistrement 
+
+#register {
+    background-color: #f1f1f1;
 }
