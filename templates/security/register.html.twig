@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription à dates courtes
+{% endblock %}
+
+{% block body %}
+
+	<section id="register">
+		<h1>S'inscrire</h1>
+
+		{{ form_start(form) }}
+
+		{{ form_row(form.lastName) }}
+		{{ form_row(form.firstName) }}
+        {{ form_row(form.email) }}
+		{{ form_row(form.password) }}
+		{{ form_row(form.passwordConfirm) }}
+
+		<button type="submit" class="mt-4 register hvr-icon-rotate">
+			<i class="fas fa-check hvr-icon"></i>
+			Confirmez l'inscription
+		</button>
+
+		{{ form_end(form) }}
+
+	</section>
+
+	<footer style="background-color: #f1f1f1;">
+		<a href="#">Mentions légales</a>
+	</footer>
+
+{% endblock %}
