@@ -3,9 +3,11 @@ $fontGreyDark : #327C83;
 $colorBack2: #3d4657;
 $colorFont: #D1D3D8;
 
-$firstFont : 'Lato', sans-serif;
+$firstFont : 'Lato',
+sans-serif;
 
-.fontGrey { // utiliser pour mettre les dernières lettres en vert
+.fontGrey {
+    // utiliser pour mettre les dernières lettres en vert
     color: $colorBack;
 }
 
@@ -34,10 +36,10 @@ $firstFont : 'Lato', sans-serif;
         justify-content: center;
         align-items: center;
         height: 100%;
-  
+
         form {
 
-            .fa-clock{
+            .fa-clock {
                 color: $colorBack;
             }
 
@@ -55,20 +57,88 @@ $firstFont : 'Lato', sans-serif;
             }
 
             input {
-                text-align:center;
+                text-align: center;
             }
 
             button {
                 color: white;
-                background: rgb(113,219,153);
-                background: linear-gradient(90deg, rgba(113,219,153,1) 0%, rgba(100,209,195,1) 50%, rgba(88,196,238,1) 100%); 
+                background: rgb(113, 219, 153);
+                background: linear-gradient(90deg, rgba(113, 219, 153, 1) 0%, rgba(100, 209, 195, 1) 50%, rgba(88, 196, 238, 1) 100%);
             }
         }
     }
 }
 
-// Page d'enregistrement 
+// Page de création de compte 
 
 #register {
-    background-color: #f1f1f1;
+    width: 70%;
+
+    .btn-register {
+        border-radius: 13px;
+        border-color: transparent;
+        background-color: $colorBack2;
+        color: white;
+        padding: 10px 20px;
+    }
+}
+
+
+.form-group {
+    // bloc comprenant le label et input
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+
+    label {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        color: $colorBack2;
+        font-size: 14px;
+        transition: 0.4s ease-out;
+        margin-left: 15%;
+
+        @media (max-width: 767px) {
+            margin-left: inherit;
+        }
+    }
+
+    input {
+        display: block;
+        width: 70%;
+        padding: 10px 0px;
+        border: none;
+        outline: none !important;
+        background: none;
+        border-bottom: 2px solid $colorBack2;
+        color: #666;
+        font-size: 13px;
+        transition: 0.4s ease-out;
+
+        &:focus {
+            box-shadow: none !important;
+        }
+
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+    }
+
+    /* Animation */
+    &:focus-within,
+    &.animation {
+        label {
+            top: 0px;
+            transform: translateY(-50%);
+            color: #3D6480;
+            font-size: 10px;
+        }
+
+        input {
+            border-bottom-color: #3D6480;
+        }
+    }
 }

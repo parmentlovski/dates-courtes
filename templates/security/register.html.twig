@@ -5,28 +5,88 @@
 
 {% block body %}
 
-	<section id="register">
-		<h1>S'inscrire</h1>
+
+	<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 750 413.5">
+		<defs>
+			<style>
+				.cls-1 {
+					fill: #327c83;
+				}
+				.cls-2 {
+					fill: #3d4657;
+				}
+			</style>
+		</defs>
+		<title>registerform</title><path class="cls-1" d="M.5-.5h750v300c-32-8.3-32-181.45-185-156-228.44,37.92-225.83,241.43-478,267.33a427.45,427.45,0,0,1-87,0Z" transform="translate(-0.5 0.5)"/><path class="cls-2" d="M.5-.5h750v248c-32-6.86-32-150-185-129-228.44,31.35-225.83,199.59-478,221a515.54,515.54,0,0,1-87,0Z" transform="translate(-0.5 0.5)"/></svg>
+
+	<h1 style="position: absolute; top: 150px; right: 50px; color: #327C83;">Créer un compte</h1>
+
+	<section id="register" class="mt-6" style="margin: auto;">
+
 
 		{{ form_start(form) }}
 
-		{{ form_row(form.lastName) }}
-		{{ form_row(form.firstName) }}
-        {{ form_row(form.email) }}
-		{{ form_row(form.password) }}
-		{{ form_row(form.passwordConfirm) }}
+		<div class="form-group">
+			{{ form_label(form.firstName) }}
+			{{ form_widget(form.firstName) }}
+		</div>
 
-		<button type="submit" class="mt-4 register hvr-icon-rotate">
-			<i class="fas fa-check hvr-icon"></i>
-			Confirmez l'inscription
-		</button>
+		<div class="form-group">
+			{{ form_label(form.lastName) }}
+			{{ form_widget(form.lastName) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.email) }}
+			{{ form_widget(form.email) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.password) }}
+			{{ form_widget(form.password) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.passwordConfirm) }}
+			{{ form_widget(form.passwordConfirm) }}
+		</div>
+
+		<div class="mt-5 has-text-centered">
+			<button type="submit" class="mt-4 btn-register is-size-6-mobile	">
+				S'enregistrer
+			</button>
+		</div>
+
 
 		{{ form_end(form) }}
 
+		{% if app.user %}
+			<div class="mt-3 has-text-centered">
+				<a href="{{ path('app_logout') }}" class="fontGrey fontGreyHover">Je suis déjà membre
+				</a>
+			</div>
+
+		{% endif %}
+
 	</section>
 
-	<footer style="background-color: #f1f1f1;">
-		<a href="#">Mentions légales</a>
-	</footer>
+	<script>
+		const inputs = document.querySelectorAll('input');
 
+for (let i = 0; i < inputs.length; i++) {
+
+let field = inputs[i];
+
+field.addEventListener('input', (e) => {
+
+if (e.target.value != "") {
+e.target.parentNode.classList.add('animation');
+} else if (e.target.value == "") {
+e.target.parentNode.classList.remove('animation');
+}
+
+})
+
+}
+	</script>
 {% endblock %}
