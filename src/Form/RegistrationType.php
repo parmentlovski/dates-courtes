@@ -15,11 +15,11 @@ class RegistrationType extends ApplicationType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class, $this->getConfiguration("Prénom", "Jean"))
-            ->add('lastName', TextType::class, $this->getConfiguration("Nom", "Dupont"))
-            ->add('email', EmailType::class, $this->getConfiguration("Email", "@"))
-            ->add('password', PasswordType::class, $this->getConfiguration("Mot de passe", "Votre mot de passe"))
-            ->add('passwordConfirm',  PasswordType::class, $this->getConfiguration("Confirmation du mot de passe", "Veuillez confirmer votre mot de passe"))
+            ->add('firstName', TextType::class, $this->getConfiguration("Prénom", ""))
+            ->add('lastName', TextType::class, $this->getConfiguration("Nom", ""))
+            ->add('email', EmailType::class, $this->getConfiguration("Email", ""))
+            ->add('password', PasswordType::class, $this->getConfiguration("Mot de passe", ""))
+            ->add('passwordConfirm',  PasswordType::class, $this->getConfiguration("Confirmation du mot de passe", ""))
         ;
     }
 
