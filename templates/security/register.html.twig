@@ -30,27 +30,41 @@
 			{{ form_label(form.firstName) }}
 			{{ form_widget(form.firstName) }}
 		</div>
+		<div class="has-text-centered mt-2 mb-4 error-register">
+			{{ form_errors(form.firstName) }}
+		</div>
 
 		<div class="form-group">
 			{{ form_label(form.lastName) }}
 			{{ form_widget(form.lastName) }}
+		</div>
+		<div class="has-text-centered mt-2 mb-4 error-register">
+			{{ form_errors(form.lastName) }}
 		</div>
 
 		<div class="form-group">
 			{{ form_label(form.email) }}
 			{{ form_widget(form.email) }}
 		</div>
+		<div class="has-text-centered mt-2 mb-4 error-register">
+			{{ form_errors(form.email) }}
+		</div>
 
 		<div class="form-group">
 			{{ form_label(form.password) }}
-			{{ form_widget(form.password) }}
+			{{ form_widget(form.password)}}
+		</div>
+		<div class="has-text-centered mt-2 mb-4 error-register">
+			{{ form_errors(form.password) }}
 		</div>
 
 		<div class="form-group">
 			{{ form_label(form.passwordConfirm) }}
 			{{ form_widget(form.passwordConfirm) }}
 		</div>
-
+		<div class="has-text-centered mt-2 mb-4 error-register">
+			{{ form_errors(form.passwordConfirm) }}
+		</div>
 		<div class="mt-5 has-text-centered">
 			<button type="submit" class="mt-4 btn-register is-size-6-mobile	">
 				S'enregistrer
@@ -71,6 +85,8 @@
 	</section>
 
 	<script>
+console.log("coucou");
+	
 		const inputs = document.querySelectorAll('input');
 
 for (let i = 0; i < inputs.length; i++) {
@@ -79,9 +95,12 @@ let field = inputs[i];
 
 field.addEventListener('input', (e) => {
 
+console.log(e.target.value);
+
 if (e.target.value != "") {
 e.target.parentNode.classList.add('animation');
-} else if (e.target.value == "") {
+} 
+else if (e.target.value == "") {
 e.target.parentNode.classList.remove('animation');
 }
 
