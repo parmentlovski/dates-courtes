@@ -2,13 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ * fields={"email"},
+ * message="Cette adresse mail est déjà utilisée, merci de la modifier !"
+ * )
  */
 class User implements UserInterface
 {
@@ -31,27 +35,31 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre prénom")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre nom")
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email(message="Veuillez renseignez un email valide")
      */
     private $email;
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Length(min=6, minMessage="Le mot de passe doit contenir au moins 6 caractères")
      */
     private $password;
 
     /**
-     *@Assert\EqualTo(propertyPath="password", message="Votre mot de passe n'est pas le même")
+     *@Assert\EqualTo(propertyPath="password", message="Les mots de passes sont identiques")
      */
     public $passwordConfirm;
 

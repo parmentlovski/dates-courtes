@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
 class SecurityController extends AbstractController
 {
     /**
@@ -42,6 +43,8 @@ class SecurityController extends AbstractController
      /**
      * Pour s'enregistrer 
      * @Route("/inscription", name="app_register")
+     * 
+     * @return Response
      */
     public function register(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -64,7 +67,7 @@ class SecurityController extends AbstractController
                 'Votre compte a bien été créé !'
             );
 
-            return $this->redirectToRoute("home_login");
+            return $this->redirectToRoute("app_login");
         }
 
         return $this->render('security/register.html.twig', [
