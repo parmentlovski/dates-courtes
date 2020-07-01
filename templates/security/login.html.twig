@@ -6,9 +6,7 @@
 {% block body %}
 
 	<section id="login">
-		{% if error %}
-			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+
 		<div class="box-login">
 
 			<form method="post">
@@ -33,16 +31,22 @@
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{#
-																        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																        See https://symfony.com/doc/current/security/remember_me.html
-																
-																        <div class="checkbox mb-3">
-																            <label>
-																                <input type="checkbox" name="_remember_me"> Remember me
-																            </label>
-																        </div>
-																    #}
+																								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+																								        See https://symfony.com/doc/current/security/remember_me.html
+																								
+																								        <div class="checkbox mb-3">
+																								            <label>
+																								                <input type="checkbox" name="_remember_me"> Remember me
+																								            </label>
+																								        </div>
+																								    #}
+
+				{% if error %}
+					<div class="has-text-centered">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+
 				<div class="mt-5 has-text-centered">
+
 					<button type="submit">
 						Se connecter
 					</button>
@@ -58,7 +62,7 @@
 
 			{% else %}
 				<h2 class="mt-6 has-text-centered">Pas de compte ?
-					<a href="{{ path('app_register') }}" class="fontGrey fontGreyHover" target="_blank">S'inscrire</span>
+					<a href="{{ path('app_register') }}" class="fontGrey fontGreyHover pl-1" target="_blank">S'inscrire</span>
 				</h2>
 			{% endif %}
 
