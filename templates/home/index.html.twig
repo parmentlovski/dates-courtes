@@ -1,73 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion
+{% block title %}Dates Courtes
+{% endblock %}
+
+{% block header %}
+	{% include "partials/header.html.twig" %}
 {% endblock %}
 
 {% block body %}
 
-	<section id="login">
-		{% if error %}
-			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
-		{% if hasError %}
-			<div>
-				<p>Les informations que vous avez fourni ne sont pas bonnes</p>
-			</div>
-		{% endif %}
-		<div class="box-login">
+	<nav class="nav-svg"> 
+		<ul class="is-flex">
+			<li><a href="#" title="Vos produits"><i class="fas fa-barcode is-size-5-mobile is-size-2"></i></a></li>
+			<li class="is-mobile-mx-2 mx-6"><a href="#" title="Modifier vos informations"><i class="fas fa-user-edit is-size-5-mobile is-size-2"></i></a></li>
+			<li><a href="{{path('app_logout')}}" title="Déconnexion"><i class="fas fa-sign-out-alt is-size-5-mobile is-size-2"></i></a></li>
+		</ul>
+	</nav>
 
-			<form method="post">
+	<section id="home">
+		<h1>Bienvenue sur dates-courtes</h1>
 
-	
-
-
-				{# {% if app.user %} #}
-					<div>
-						Vous êtes connecté avec
-						{{ app.user.lastName }},
-						<a href="{{ path('home_logout') }}">Logout</a>
-					</div>
-				{# {% endif %} #}
-
-				<h1 class="mb-6 is-size-1 is-size-3-mobile has-text-centered">
-					<i class="far fa-clock"></i>
-					Date<span class="fontGrey">s</span>
-					courte<span class="fontGrey">s</span>
-				</h1>
-				<div class="mt-6 has-text-centered">
-					<label for="inputEmail"></label>
-					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email" required autofocus>
-				</div>
-				<div class="my-5 has-text-centered">
-					<label for="inputPassword"></label>
-					<input type="password" name="password" id="inputPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" required>
-				</div>
-
-				<input
-				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-				{#
-								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-								        See https://symfony.com/doc/current/security/remember_me.html
-								
-								        <div class="checkbox mb-3">
-								            <label>
-								                <input type="checkbox" name="_remember_me"> Remember me
-								            </label>
-								        </div>
-								    #}
-				<div class="mt-5 has-text-centered">
-					<button type="submit">
-						Se connecter
-					</button>
-				</div>
-
-			</form>
-
-			<h2 class="mt-6 has-text-centered">Pas de compte ?
-				<a href="{{ path('app_register') }}" class="fontGrey fontGreyHover" target="_blank">S'inscrire</span>
-			</h2>
-		</div>
 
 	</section>
+
 {% endblock %}
