@@ -47,7 +47,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\Email(message="Veuillez renseignez un email valide")
+     * @Assert\Email(message="Veuillez renseigner un email valide")
      */
     private $email;
 
@@ -59,7 +59,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     *@Assert\EqualTo(propertyPath="password", message="Les mots de passes sont identiques")
+     *@Assert\EqualTo(propertyPath="password", message="Les mots de passes ne sont pas identiques")
      */
     public $passwordConfirm;
 
