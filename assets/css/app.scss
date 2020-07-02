@@ -22,6 +22,30 @@ sans-serif;
 //     background-color: $colorBack2;
 // }
 
+// Pour situer la nav dans le svg du header
+.nav-svg {
+    position: absolute; 
+    top: 200px; 
+    right: 275px; 
+    color: $fontGreyDark;
+
+    @media (max-width: 767px) {
+        position: absolute; 
+        top: 125px; 
+        right: 50px; 
+        color: $fontGreyDark;
+    }
+
+    ul {
+        li {
+            a {
+                color: #327C83;
+            }
+        }
+    }
+
+}
+
 // Page de login
 #login {
     width: 100vw;
@@ -69,17 +93,25 @@ sans-serif;
     }
 }
 
+
+
 // Page de création de compte 
 
 #register {
     width: 70%;
 
     .btn-register {
-        border-radius: 13px;
+        border-radius: 11px;
         border-color: transparent;
         background-color: $colorBack2;
         color: white;
-        padding: 10px 20px;
+        padding: 8px 20px;
+    }
+
+    .error-register {
+        color: red;
+        font-size: 0.75em;
+        font-weight: thin;
     }
 }
 
@@ -142,3 +174,4 @@ sans-serif;
         }
     }
 }
+
