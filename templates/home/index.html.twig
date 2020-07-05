@@ -9,18 +9,107 @@
 
 {% block body %}
 
-	<nav class="nav-svg"> 
-		<ul class="is-flex">
-			<li><a href="#" title="Vos produits"><i class="fas fa-barcode is-size-5-mobile is-size-2"></i></a></li>
-			<li class="is-mobile-mx-2 mx-6"><a href="#" title="Modifier vos informations"><i class="fas fa-user-edit is-size-5-mobile is-size-2"></i></a></li>
-			<li><a href="{{path('app_logout')}}" title="Déconnexion"><i class="fas fa-sign-out-alt is-size-5-mobile is-size-2"></i></a></li>
-		</ul>
-	</nav>
+{% include "partials/nav.html.twig" %}
 
 	<section id="home">
-		<h1>Bienvenue sur dates-courtes</h1>
+		<h1 class="has-text-centered mt-6 is-size-6-mobile is-size-4"><strong>Dates courtes</strong> permet de gérer en direct ses prochaines péremptions !</h1>
+		<hr>
 
+		<table class="table is-hoverable mt-4 mb-6" style="margin:auto;">
+			<caption class="is-size-6-mobile is-size-5 mb-5">Vos prochaines dates courtes :</caption>
+			<thead>
+				<tr>
+					<th>Rayon</th>
+					<th>Produit</th>
+					<th>Date</th>
+					<th>Prix</th>
+					<th title="Référence">Réf</th>
+					<th>Edit</th>
+					<th title="Supprimer">Suppr</th>
+				</tr>
+			</thead>
 
+			<tbody class="content">
+				<tr>
+					<td>Bio</td>
+					<td>Chips</td>
+					<td>27/07/20</td>
+					<td>3€50</td>
+					<td>367</td>
+					<td class="has-text-centered">
+						<i class="fas fa-pencil-alt"></i>
+					</td>
+					<td class="has-text-centered">
+						<i class="fas fa-trash-alt"></i>
+					</td>
+				</tr>
+				<tr>
+					<td>Bio</td>
+					<td>Chips</td>
+					<td>27/07/20</td>
+					<td>3€50</td>
+					<td>367</td>
+					<td class="has-text-centered">
+						<i class="fas fa-pencil-alt"></i>
+					</td>
+					<td class="has-text-centered">
+						<i class="fas fa-trash-alt"></i>
+					</td>
+				</tr>
+				<tr>
+					<td>Bio</td>
+					<td>Chips</td>
+					<td>27/07/20</td>
+					<td>3€50</td>
+					<td>367</td>
+					<td class="has-text-centered">
+						<i class="fas fa-pencil-alt"></i>
+					</td>
+					<td class="has-text-centered">
+						<i class="fas fa-trash-alt"></i>
+					</td>
+				</tr>
+				<tr>
+					<td>Bio</td>
+					<td>Chips</td>
+					<td>27/07/20</td>
+					<td>3€50</td>
+					<td>367</td>
+					<td class="has-text-centered">
+						<i class="fas fa-pencil-alt"></i>
+					</td>
+					<td class="has-text-centered">
+						<i class="fas fa-trash-alt"></i>
+					</td>
+				</tr>
+				<tr>
+					<td>Bio</td>
+					<td>Chips</td>
+					<td>27/07/20</td>
+					<td>3€50</td>
+					<td>367</td>
+					<td class="has-text-centered">
+						<i class="fas fa-pencil-alt"></i>
+					</td>
+					<td class="has-text-centered">
+						<i class="fas fa-trash-alt"></i>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<hr>
+
+		<div class="has-text-centered mt-6 mb-6 add-product is-size-6-mobile is-size-5 has-text-weight-bold">
+			<a href="#">Ajouter un produit
+				<i class="fas fa-plus-circle"></i>
+			</a>
+		</div>
 	</section>
+
+
+	{% block footer %}
+		{% include "partials/footer.html.twig" %}
+	{% endblock %}
 
 {% endblock %}
