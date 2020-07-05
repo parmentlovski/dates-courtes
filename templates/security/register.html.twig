@@ -11,7 +11,7 @@
 
 	<h1 class="nav-svg">Créer un compte</h1>
 
-	<section id="register" class="mt-6" style="margin: auto;">
+	<section id="register" class="mt-6">
 
 
 		{{ form_start(form) }}
@@ -20,7 +20,7 @@
 			{{ form_label(form.firstName) }}
 			{{ form_widget(form.firstName) }}
 		</div>
-		<div class="has-text-centered mt-2 mb-4 error-register">
+		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.firstName) }}
 		</div>
 
@@ -28,7 +28,7 @@
 			{{ form_label(form.lastName) }}
 			{{ form_widget(form.lastName) }}
 		</div>
-		<div class="has-text-centered mt-2 mb-4 error-register">
+		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.lastName) }}
 		</div>
 
@@ -36,7 +36,7 @@
 			{{ form_label(form.email) }}
 			{{ form_widget(form.email) }}
 		</div>
-		<div class="has-text-centered mt-2 mb-4 error-register">
+		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.email) }}
 		</div>
 
@@ -44,7 +44,7 @@
 			{{ form_label(form.password) }}
 			{{ form_widget(form.password)}}
 		</div>
-		<div class="has-text-centered mt-2 mb-4 error-register">
+		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.password) }}
 		</div>
 
@@ -52,30 +52,38 @@
 			{{ form_label(form.passwordConfirm) }}
 			{{ form_widget(form.passwordConfirm) }}
 		</div>
-		<div class="has-text-centered mt-2 mb-4 error-register">
+		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.passwordConfirm) }}
 		</div>
-		<div class="mt-5 has-text-centered">
-			<button type="submit" class="mt-4 btn-register is-size-6-mobile	">
-				S'enregistrer
-			</button>
+		<div class="has-text-centered">
+			{{ form_row(form.validate) }}
+		</div>
+		<div class="has-text-centered mt-2 mb-4 error-form">
+			{{ form_errors(form.validate) }}
 		</div>
 
+	</div>
+	<div class="mt-5 has-text-centered">
+		<button type="submit" class="mt-4 btn-form is-size-6-mobile">
+			S'enregistrer
+		</button>
+	</div>
 
-		{{ form_end(form) }}
 
-		{% if app.user %}
-			<div class="mt-5 has-text-centered">
-				<a href="{{ path('app_login') }}" class="fontGrey fontGreyHover">Je suis déjà membre
-				</a>
-			</div>
+	{{ form_end(form) }}
 
-		{% endif %}
+	{% if app.user %}
+		<div class="mt-5 has-text-centered">
+			<a href="{{ path('app_login') }}" class="fontGrey fontGreyHover">Je suis déjà membre
+			</a>
+		</div>
 
-	</section>
+	{% endif %}
 
-	<script>
-		console.log("cocou");
+</section>
+
+<script>
+	console.log("cocou");
 
 const inputs = document.querySelectorAll('input');
 
@@ -99,5 +107,4 @@ e.target.parentNode.classList.remove('animation');
 
 
 }
-	</script>
-{% endblock %}
+</script>{% endblock %}
