@@ -22,17 +22,32 @@ sans-serif;
 //     background-color: $colorBack2;
 // }
 
+// Logo du header
+.img-logo {
+    position:absolute; 
+    top: 50px; 
+    left:100px; 
+
+    @media(max-width: 767px) {
+        position:absolute; 
+        top: 40px; 
+        left:30px; 
+        height: 64px;
+        width: 64px;
+    }
+}
+
 // Pour situer la nav dans le svg du header
 .nav-svg {
-    position: absolute; 
-    top: 200px; 
-    right: 275px; 
+    position: absolute;
+    top: 200px;
+    right: 215px;
     color: $fontGreyDark;
 
     @media (max-width: 767px) {
-        position: absolute; 
-        top: 125px; 
-        right: 50px; 
+        position: absolute;
+        top: 125px;
+        right: 25px;
         color: $fontGreyDark;
     }
 
@@ -40,6 +55,16 @@ sans-serif;
         li {
             a {
                 color: #327C83;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-ml {
+                margin-left: 3em;
+            }
+
+            .nav-mr {
+                margin-right: 3em;
             }
         }
     }
@@ -95,25 +120,34 @@ sans-serif;
 
 
 
-// Page de création de compte 
+// Page de création de compte & de modification des informations
 
-#register {
+#register,
+#user {
+    margin: auto;
     width: 70%;
 
-    .btn-register {
+    .btn-form {
         border-radius: 11px;
         border-color: transparent;
         background-color: $colorBack2;
-        color: white;
+        color: #f1f1f1;
         padding: 8px 20px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #242C3C;
+            color: white;
+        }
     }
 
-    .error-register {
+    .error-form {
         color: red;
         font-size: 0.75em;
         font-weight: thin;
     }
 }
+
 
 
 .form-group {
@@ -175,3 +209,50 @@ sans-serif;
     }
 }
 
+table {
+
+    @media (max-width: 767px) {
+
+        thead {
+            font-size: 0.75em;
+        }
+
+        tbody {
+            font-size: 0.6em;
+        }
+    }
+
+}
+
+// Icône de je souhaite ajouter un produit
+.add-product {
+    a {
+        color: #3d4657;
+
+        &:hover {
+            color: #327C83;
+        }
+
+        .fa-plus-circle {
+            color: #327C83;
+        }
+
+    }
+
+
+}
+
+
+
+footer {
+    background-color: $colorBack2;
+
+    a {
+        color: white;
+
+        &:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+}
