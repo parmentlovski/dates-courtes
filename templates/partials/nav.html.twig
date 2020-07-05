@@ -1,0 +1,19 @@
+<nav class="nav-svg">
+		<ul class="is-flex">
+			<li class="nav-mr">
+				<a href="#" title="Vos produits">
+					<i class="fas fa-barcode is-size-5-mobile is-size-2"></i>
+				</a>
+			</li>
+			<li class="mx-6">
+				<a href="{{ path('user_profil', {'slug' : app.user.slug }) }}" title="Modifier vos informations">
+					<i class="fas fa-user-edit is-size-5-mobile is-size-2"></i>
+				</a>
+			</li>
+			<li class="nav-ml">
+				<a href="{{path('app_logout')}}" title="Déconnexion">
+					<i class="fas fa-sign-out-alt is-size-5-mobile is-size-2"></i>
+				</a>
+			</li>
+		</ul>
+	</nav>
