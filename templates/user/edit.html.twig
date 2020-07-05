@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dates Courtes
+{% endblock %}
+
+{% block header %}
+	{% include "partials/header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+
+{% include "partials/nav.html.twig" %}
+
+	<section id="home">
+		<h1 class="has-text-centered mt-6 is-size-4">Votre prfil</h1>
+
+					<hr>
+					{{ form_label(form.firstName, 'Prénom') }}
+					{{ form_widget(form.firstName) }}
+					{{ form_label(form.lastName, 'Nom') }}
+					{{ form_widget(form.lastName) }}
+					{{ form_row(form.email) }}
+					{{ form_row(form.password) }}
+					{{ form_row(form.passwordConfirm) }}
+	</section>
+
+
+	{% block footer %}
+		{% include "partials/footer.html.twig" %}
+	{% endblock %}
+
+{% endblock %}

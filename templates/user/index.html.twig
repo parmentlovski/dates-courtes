@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dates Courtes
+{% endblock %}
+
+{% block header %}
+	{% include "partials/header.html.twig" %}
+{% endblock %}
+
+{% block body %}
+
+	{% include "partials/nav.html.twig" %}
+
+	<section id="user">
+		<h1 class="has-text-centered mt-6 is-size-3">Votre profil</h1>
+
+		<hr>
+		<div class="has-text-centered">
+			{{ form_start(form) }}
+			<h2 class="mb-4 is-size-5">Informations générales</h2>
+			<div class="form-group">
+				{{ form_label(form.firstName, 'Prénom') }}
+				{{ form_widget(form.firstName) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.firstName) }}
+			</div>
+			<div class="form-group my-4">
+				{{ form_label(form.lastName, 'Nom') }}
+				{{ form_widget(form.lastName) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.lastName) }}
+			</div>
+			<div class="form-group mb-4">
+				{{ form_label(form.slug, 'Slug') }}
+				{{ form_widget(form.slug) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.slug) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.email) }}
+				{{ form_widget(form.email) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.email) }}
+			</div>
+			<hr>
+			<h2 class="mb-4 is-size-5">Mot de passe</h2>
+			<div class="form-group">
+				{{ form_label(form.password, 'Mot de passe') }}
+				{{ form_widget(form.password) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.password) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(form.passwordConfirm) }}
+				{{ form_widget(form.passwordConfirm) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.passwordConfirm) }}
+			</div>
+			<button type="submit" class="mt-5 btn-form is-size-6-mobile">
+				Sauvegarder
+			</button>
+			{{ form_end(form) }}
+		</div>
+
+		<hr>
+
+	</section>
+
+
+	{% block footer %}
+		{% include "partials/footer.html.twig" %}
+	{% endblock %}
+
+
+	<script>
+		console.log("cocou");
+
+const inputs = document.querySelectorAll('input');
+
+for (let i = 0; i < inputs.length; i++) {
+
+let field = inputs[i];
+
+// Si le form renvoie une erreur il faut que les labels des champs restent au dessus du texte
+if (field.value != "") {
+field.parentNode.classList.add('animation');
+}
+
+// Dès que l'user écrit le label doit passer au dessus
+field.addEventListener('input', (e) => { // console.log(e.target.value);
+if (e.target.value != "") {
+e.target.parentNode.classList.add('animation');
+} else if (e.target.value == "") {
+e.target.parentNode.classList.remove('animation');
+}
+});
+
+
+}
+	</script>
+
+{% endblock %}
