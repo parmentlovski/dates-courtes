@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(
  * fields={"email"},
  * message="Cette adresse mail est déjà utilisée, merci de la modifier !"
@@ -62,6 +64,36 @@ class User implements UserInterface
      *@Assert\EqualTo(propertyPath="password", message="Les mots de passes ne sont pas identiques")
      */
     public $passwordConfirm;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+
+    /**
+     * La case à cocher pour valider le formulaire
+     *
+     */
+    private $validate;
+
+    /**
+     * Initialise le slug
+     * 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     * 
+     * @return void 
+     */
+    public function initializeSlug()
+    {
+        if (empty($this->slug)) {
+
+            $slugify =  new Slugify();
+            $this->slug = $slugify->slugify($this->firstName . ' ' . $this->lastName);
+        }
+    }
+
 
     public function getId(): ?int
     {
@@ -176,4 +208,27 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getvalidate()
+    {
+      return $this->validate;
+    }
+  
+    public function setvalidate($validate)
+    {
+      $this->validate = $validate;
+    }
+
 }
