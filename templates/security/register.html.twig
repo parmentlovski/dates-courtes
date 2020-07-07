@@ -3,11 +3,10 @@
 {% block title %}Inscription à dates courtes
 {% endblock %}
 
-{% block header %}
-	{% include "partials/header.html.twig" %}
-{% endblock %}
 
 {% block body %}
+
+	{% include "partials/header.html.twig" %}
 
 	<h1 class="nav-svg">Créer un compte</h1>
 
@@ -55,7 +54,7 @@
 		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.passwordConfirm) }}
 		</div>
-		<div class="has-text-centered">
+		<div class="has-text-centered registration">
 			{{ form_row(form.validate) }}
 		</div>
 		<div class="has-text-centered mt-2 mb-4 error-form">

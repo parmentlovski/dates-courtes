@@ -3,11 +3,9 @@
 {% block title %}Dates Courtes
 {% endblock %}
 
-{% block header %}
-	{% include "partials/header.html.twig" %}
-{% endblock %}
-
 {% block body %}
+
+	{% include "partials/header.html.twig" %}
 
 	{% include "partials/nav.html.twig" %}
 
@@ -17,7 +15,7 @@
 		<hr>
 		<div class="has-text-centered">
 			{{ form_start(form) }}
-			<h2 class="mb-4 is-size-5">Informations générales</h2>
+			<h2 class="mb-4 is-size-5">Modifier informations</h2>
 			<div class="form-group">
 				{{ form_label(form.firstName, 'Prénom') }}
 				{{ form_widget(form.firstName) }}
@@ -47,7 +45,7 @@
 				{{ form_errors(form.email) }}
 			</div>
 			<hr>
-			<h2 class="mb-4 is-size-5">Mot de passe</h2>
+			<h2 class="mb-4 is-size-5">Modifier mot de passe</h2>
 			<div class="form-group">
 				{{ form_label(form.password, 'Mot de passe') }}
 				{{ form_widget(form.password) }}
@@ -62,13 +60,14 @@
 			<div class="has-text-centered mt-2 mb-4 error-form">
 				{{ form_errors(form.passwordConfirm) }}
 			</div>
-			<button type="submit" class="mt-5 btn-form is-size-6-mobile">
+			<hr>
+
+			<button type="submit" class="my-4 btn-form is-size-6-mobile">
 				Sauvegarder
 			</button>
 			{{ form_end(form) }}
 		</div>
 
-		<hr>
 
 	</section>
 
@@ -79,9 +78,8 @@
 
 
 	<script>
-		console.log("cocou");
 
-const inputs = document.querySelectorAll('input');
+		const inputs = document.querySelectorAll('input');
 
 for (let i = 0; i < inputs.length; i++) {
 

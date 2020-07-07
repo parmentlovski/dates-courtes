@@ -3,113 +3,149 @@
 {% block title %}Dates Courtes
 {% endblock %}
 
-{% block header %}
-	{% include "partials/header.html.twig" %}
-{% endblock %}
-
 {% block body %}
 
-{% include "partials/nav.html.twig" %}
+	{% include "partials/header.html.twig" %}
+
+	{% include "partials/nav.html.twig" %}
 
 	<section id="home">
-		<h1 class="has-text-centered mt-6 is-size-6-mobile is-size-4"><strong>Dates courtes</strong> permet de gérer en direct ses prochaines péremptions !</h1>
+		<h1 class="has-text-centered mt-6 is-size-6-mobile is-size-4">
+			<strong>Dates courtes</strong>
+			permet de gérer en direct ses prochaines péremptions !</h1>
+
+		<hr>
+		<div class="has-text-centered mt-6 mb-6 add-product is-size-6-mobile is-size-5 has-text-weight-bold">
+			<a href="{{path('product_add')}}">Ajouter un produit
+				<i class="fas fa-plus-circle"></i>
+			</a>
+		</div>
 		<hr>
 
-		<table class="table is-hoverable mt-4 mb-6" style="margin:auto;">
-			<caption class="is-size-6-mobile is-size-5 mb-5">Vos prochaines dates courtes :</caption>
+		<table class="table is-hoverable mt-4 mb-6">
+			<caption class="is-size-6-mobile is-size-5 mb-5">Rayon : les 20 prochaines dates courtes</caption>
 			<thead>
 				<tr>
 					<th>Rayon</th>
 					<th>Produit</th>
 					<th>Date</th>
-					<th>Prix</th>
-					<th title="Référence">Réf</th>
-					<th>Edit</th>
-					<th title="Supprimer">Suppr</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 
 			<tbody class="content">
-				<tr>
-					<td>Bio</td>
-					<td>Chips</td>
-					<td>27/07/20</td>
-					<td>3€50</td>
-					<td>367</td>
-					<td class="has-text-centered">
-						<i class="fas fa-pencil-alt"></i>
-					</td>
-					<td class="has-text-centered">
-						<i class="fas fa-trash-alt"></i>
-					</td>
-				</tr>
-				<tr>
-					<td>Bio</td>
-					<td>Chips</td>
-					<td>27/07/20</td>
-					<td>3€50</td>
-					<td>367</td>
-					<td class="has-text-centered">
-						<i class="fas fa-pencil-alt"></i>
-					</td>
-					<td class="has-text-centered">
-						<i class="fas fa-trash-alt"></i>
-					</td>
-				</tr>
-				<tr>
-					<td>Bio</td>
-					<td>Chips</td>
-					<td>27/07/20</td>
-					<td>3€50</td>
-					<td>367</td>
-					<td class="has-text-centered">
-						<i class="fas fa-pencil-alt"></i>
-					</td>
-					<td class="has-text-centered">
-						<i class="fas fa-trash-alt"></i>
-					</td>
-				</tr>
-				<tr>
-					<td>Bio</td>
-					<td>Chips</td>
-					<td>27/07/20</td>
-					<td>3€50</td>
-					<td>367</td>
-					<td class="has-text-centered">
-						<i class="fas fa-pencil-alt"></i>
-					</td>
-					<td class="has-text-centered">
-						<i class="fas fa-trash-alt"></i>
-					</td>
-				</tr>
-				<tr>
-					<td>Bio</td>
-					<td>Chips</td>
-					<td>27/07/20</td>
-					<td>3€50</td>
-					<td>367</td>
-					<td class="has-text-centered">
-						<i class="fas fa-pencil-alt"></i>
-					</td>
-					<td class="has-text-centered">
-						<i class="fas fa-trash-alt"></i>
-					</td>
-				</tr>
-			</tbody>
 
+				{% for product in products %}
+					{% if (app.user and app.user == product.user) and (product.reserve == false) %}
+						<tr>
+							<td>{{product.rayon}}</td>
+							<td>{{product.title}}</td>
+							<td class="dates">{{product.date | date('d/m/Y') }}</td>
+							<td class="has-text-centered">
+								<a href="{{path('product_show', { id : product.id })}}">
+									<i class="fas fa-search"></i>
+								</a>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
 		</table>
+
 		<hr>
 
-		<div class="has-text-centered mt-6 mb-6 add-product is-size-6-mobile is-size-5 has-text-weight-bold">
-			<a href="#">Ajouter un produit
-				<i class="fas fa-plus-circle"></i>
-			</a>
-		</div>
-	</section>
+		<table class="table is-hoverable mt-4 mb-6">
+			<caption class="is-size-6-mobile is-size-5 mb-5">Réserve : prochaines dates courtes</caption>
+			<thead>
+				<tr>
+					<th>Rayon</th>
+					<th>Produit</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
 
+			<tbody class="content">
+
+				{% for product in products %}
+					{% if (app.user and app.user == product.user) and (product.reserve == true) %}
+						<tr>
+							<td>{{product.rayon}}</td>
+							<td>{{product.title}}</td>
+							<td class="dates">{{product.date | date('d/m/Y') }}</td>
+							<td class="has-text-centered">
+								<a href="{{path('product_show', { id : product.id })}}">
+									<i class="fas fa-search"></i>
+								</a>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
 
 	{% block footer %}
 		{% include "partials/footer.html.twig" %}
 	{% endblock %}
 
+	<script>
+
+		// 1ère date => format string issu du input
+var dates = document.querySelectorAll('.dates');
+
+dates.forEach(date => {
+
+var dateString = date.innerHTML;
+
+// console.log(dateString);
+
+
+var dateParts = dateString.split("/");
+
+// month is 0-based, that's why we need dataParts[1] - 1
+var dateObject = new Date(+ dateParts[2], dateParts[1] - 1, + dateParts[0]);
+
+var date1 = new Date(dateObject.toString());
+// console.log(date1);
+
+// 2ème date => date du jour
+
+var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+var yyyy = today.getFullYear();
+
+today = dd + '/' + mm + '/' + yyyy;
+
+// console.log(today);
+
+var date2 = new Date(today);
+
+// console.log(date2);
+
+// To calculate the time difference of two dates
+var Difference_In_Time = date1.getTime() - date2.getTime();
+
+// To calculate the no. of days between two dates
+var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+// To display the final no. of days (result)
+// console.log("Total number of days between dates  <br>" + date1 + "<br> and <br>" + date2 + " is: <br> " + Difference_In_Days);
+
+
+if (Difference_In_Days < 30) {
+console.log("oooh va jeter ton produit");
+// for (let i = 0; i < lignes.length; i++) {
+date.parentNode.classList.toggle("trash");
+// }
+} else { console.log("Tout est bon");
+// for (let i = 0; i < lignes.length; i++) {
+date.parentNode.classList.remove("trash");
+// }
+}
+
+});
+	</script>
 {% endblock %}
