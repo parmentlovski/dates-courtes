@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -19,9 +20,12 @@ class HomeController extends AbstractController
      * 
      * @return Response
      */
-    public function home()
+    public function home(ProductRepository $productRepo)
     {
-        return $this->render('home/index.html.twig');
+
+        return $this->render('home/index.html.twig', [
+            'products' => $productRepo->findBy([], ['date' => 'ASC'],20)
+        ]);
     }
 
      /**
