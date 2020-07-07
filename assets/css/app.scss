@@ -18,20 +18,25 @@ sans-serif;
     }
 }
 
+#text {
+    display: none;
+}
+
+
 // html {
 //     background-color: $colorBack2;
 // }
 
 // Logo du header
 .img-logo {
-    position:absolute; 
-    top: 50px; 
-    left:100px; 
+    position: absolute;
+    top: 50px;
+    left: 100px;
 
     @media(max-width: 767px) {
-        position:absolute; 
-        top: 40px; 
-        left:30px; 
+        position: absolute;
+        top: 40px;
+        left: 30px;
         height: 64px;
         width: 64px;
     }
@@ -123,7 +128,9 @@ sans-serif;
 // Page de création de compte & de modification des informations
 
 #register,
-#user {
+#user,
+#product,
+#edit {
     margin: auto;
     width: 70%;
 
@@ -148,6 +155,17 @@ sans-serif;
     }
 }
 
+// checkbox pour valider les conditions générales
+.registration {
+
+    label {
+        font-size: 0.9em;
+    }
+
+    #registration_validate {
+        margin-left: 0.5em;
+    }
+}
 
 
 .form-group {
@@ -209,19 +227,114 @@ sans-serif;
     }
 }
 
-table {
+.form-product {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
 
-    @media (max-width: 767px) {
+    label {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        transform: translateY(-50%);
+        color: #3D6480;
+        font-size: 14px;
+        margin-left: 15%;
 
-        thead {
-            font-size: 0.75em;
-        }
-
-        tbody {
-            font-size: 0.6em;
+        @media (max-width: 767px) {
+            margin-left: inherit;
         }
     }
 
+    input {
+        display: block;
+        width: 70%;
+        padding: 10px 0px;
+        border: none;
+        outline: none !important;
+        background: none;
+        border-bottom: 2px solid $colorBack2;
+        color: #666;
+        font-size: 13px;
+        transition: 0.4s ease-out;
+
+        &:focus {
+            box-shadow: none !important;
+        }
+
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+    }
+
+    &:focus-within,
+    &.animation {
+
+        input {
+            border-bottom-color: #3D6480;
+        }
+    }
+}
+
+// #product_reserve,
+#product_date {
+
+    // pour éviter que le input déborde sur le label pour le form d'ajout de produits
+    @media (max-width: 767px) {
+        margin-top: 15px;
+    }
+}
+
+.reserve {
+
+    // align le text à gauche pour la premiere question du form d'ajout de produit
+    @media (max-width: 767px) {
+        text-align: left;
+    }
+}
+
+.optional {
+    display: none;
+}
+
+#home {
+    table {
+        margin: auto;
+
+        @media (max-width: 767px) {
+
+            thead {
+                font-size: 0.75em;
+            }
+
+            tbody {
+                font-size: 0.6em;
+            }
+        }
+
+    }
+}
+
+#product-index {
+    width: 95%;
+
+    table {
+
+        margin: auto;
+
+        @media (max-width: 767px) {
+
+            thead {
+                font-size: 0.65em;
+            }
+
+            tbody {
+                font-size: 0.55em;
+            }
+        }
+
+    }
 }
 
 // Icône de je souhaite ajouter un produit
@@ -232,17 +345,72 @@ table {
         &:hover {
             color: #327C83;
         }
-
-        .fa-plus-circle {
-            color: #327C83;
-        }
-
     }
+}
 
+// block comprenant le h2 + le signe fontawesome
+.info-optional {
+    display: flex;
+    justify-content: center;
+    width: 100%; // pour éviter un grand espacement entre les deux éléments
+}
 
+// Bouton afficher les infos facultatives
+.arrow-optional {
+    background-color: transparent;
+    border: none;
+}
+
+// fontawesome signe + & - 
+.fa-plus-circle,
+.fa-minus-circle {
+    color: #327C83;
 }
 
 
+
+
+// Product 
+
+// ajouter un produit 
+
+.flash-notice {
+    background-color: $fontGreyDark;
+    color: white;
+}
+
+.flash-error {
+    background-color: #8B0000;
+    color: white;
+}
+
+// supprimer, editer et + infos sur un produit
+.fa-trash-alt,
+.fa-pencil-alt,
+.fa-search {
+    color: $colorBack;
+
+    &:hover {
+        color: $colorBack2
+    }
+}
+
+.trash {
+    background-color: #8B0000;
+    color: white;
+
+    &:hover {
+        background-color: $colorBack2 !important;
+    } 
+
+    .fa-search {
+        color: white;
+
+        &:hover {
+            color: #f1f1f1;
+        }
+    }
+}
 
 footer {
     background-color: $colorBack2;
