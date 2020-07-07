@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dates Courtes
+{% endblock %}
+
+{% block body %}
+
+	{% include "partials/header.html.twig" %}
+
+	{% include "partials/nav.html.twig" %}
+
+	<section id="product-show">
+		<h1 class="has-text-centered mt-6 is-size-6-mobile is-size-4">
+			<strong>Produit :
+				{{product.title }}</strong>
+		</h1>
+
+
+		<ul class="has-text-centered">
+			<li class="my-5">
+				<span class="has-text-weight-bold">Rayon :
+				</span>
+				{{ product.rayon }}</li>
+			<li class="my-5">
+				<span class="has-text-weight-bold">Sous rayon :
+				</span>
+				{{ product.sousRayon }}</li>
+			<li class="my-5">
+				<span class="has-text-weight-bold">Date :
+				</span>
+				{{ product.date | date('d/m/Y') }}</li>
+			<li class="my-5">
+				<span class="has-text-weight-bold">Prix :
+				</span>
+				{{ product.price }}
+				€</li>
+			<li class="my-5">
+				<span class="has-text-weight-bold">Référence :
+				</span>
+				{{ product.reference }}</li>
+		</ul>
+
+		<div class="has-text-centered my-6">
+			<a href="{{path('app_home')}}" class="fontGrey fontGreyHover">
+				<i class="fas fa-undo-alt"></i>
+				Retour à l'accueil</a>
+		</div>
+
+
+	</section>
+	{% block footer %}
+		{% include "partials/footer.html.twig" %}
+	{% endblock %}
+{% endblock %}

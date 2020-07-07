@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dates Courtes
+{% endblock %}
+
+{% block body %}
+
+	{% include "partials/header.html.twig" %}
+
+	{% include "partials/nav.html.twig" %}
+
+	<section id="product-index">
+		<h1 class="has-text-centered mt-6 is-size-6-mobile is-size-4">
+			<strong>Vos produits</strong>
+		</h1>
+
+		<div class="columns is-mobile my-5 ">
+			{% for message in app.flashes('notice') %}
+				<div class="flash-notice column is-10 is-offset-1 py-4 is-size-6-mobile is-size-5 has-text-centered">
+					{{ message }}
+				</div>
+			{% endfor %}
+		</div>
+		<hr>
+
+
+		<div class="has-text-centered mt-6 mb-6 add-product is-size-6-mobile is-size-5 has-text-weight-bold">
+			<a href="{{ path('product_add')}}">Ajouter un produit
+				<i class="fas fa-plus-circle"></i>
+			</a>
+		</div>
+
+		<hr>
+
+		<table class="table is-hoverable mt-4 mb-6">
+			<caption class="is-size-6-mobile is-size-5 mb-5">Rayon : toutes vos dates courtes</caption>
+			<thead>
+				<tr>
+					<th>Rayon</th>
+					<th>Produit</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody class="content">
+
+				{% for product in products %}
+					{% if (app.user and app.user == product.user) and (product.reserve == false) %}
+						<tr>
+							<td>{{product.rayon}}</td>
+							<td>{{product.title}}</td>
+							<td class="test">{{product.date | date('d/m/Y') }}</td>
+							<td>
+								<a href="{{path('product_edit', { id : product.id })}}">
+									<i class="fas fa-pencil-alt mx-3"></i>
+								</a>
+								<a href="{{path('product_delete', { id : product.id })}}">
+									<i class="fas fa-trash-alt"></i>
+								</a>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<hr>
+
+		<table class="table is-hoverable mt-4 mb-6">
+			<caption class="is-size-6-mobile is-size-5 mb-5">Réserve : toutes vos dates courtes</caption>
+			<thead>
+				<tr>
+					<th>Rayon</th>
+					<th>Produit</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody class="content">
+
+				{% for product in products %}
+					{% if (app.user and app.user == product.user) and (product.reserve == true) %}
+						<tr>
+							<td>{{product.rayon}}</td>
+							<td>{{product.title}}</td>
+							<td>{{product.date | date('d/m/Y') }}</td>
+							<td>
+								<a href="{{path('product_edit', { id : product.id })}}">
+									<i class="fas fa-pencil-alt mx-3"></i>
+								</a>
+								<a href="{{path('product_delete', { id : product.id })}}">
+									<i class="fas fa-trash-alt"></i>
+								</a>
+							</td>
+
+
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</section>
+	{% block footer %}
+		{% include "partials/footer.html.twig" %}
+	{% endblock %}
+
+	
+{% endblock %}

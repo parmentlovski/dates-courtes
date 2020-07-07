@@ -1,0 +1,117 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification d'un produit
+{% endblock %}
+
+
+{% block body %}
+
+	{% include "partials/header.html.twig" %}
+
+	{% include "partials/nav.html.twig" %}
+	<section id="edit">
+		<h1 class="has-text-centered my-6 is-size-4">Modifier le produit :
+			{{ product.title }}</h1>
+		<div class="has-text-centered my-2">
+			{{ form_start(form) }}
+
+			<h2 class="mb-5 is-size-5">Informations obligatoires</h2>
+
+			<div class="form-product reserve mt-5">
+				{{ form_label(form.reserve) }}
+				{{ form_widget(form.reserve) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.reserve) }}
+			</div>
+
+			<div class="form-product mt-6">
+				{{ form_label(form.rayon) }}
+				{{ form_widget(form.rayon) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.rayon) }}
+			</div>
+			<div class="form-product mt-6">
+				{{ form_label(form.title)}}
+				{{ form_widget(form.title) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.title) }}
+			</div>
+			<div class="form-product mt-6">
+				{{ form_label(form.date) }}
+				{{ form_widget(form.date) }}
+			</div>
+			<div class="has-text-centered mt-2 mb-4 error-form">
+				{{ form_errors(form.date) }}
+			</div>
+			<hr>
+			<div class="mb-5 info-optional">
+				<h2 class="is-size-5">Informations facultatives</h2>
+				<button type="button" class="arrow-optional is-size-6-mobile is-size-5">
+					<i id="block-optional" class="fas fa-plus-circle"></i>
+				</button>
+			</div>
+
+			<div class="optional">
+				<div class="form-product mt-6">
+					{{ form_label(form.sousRayon) }}
+					{{ form_widget(form.sousRayon) }}
+				</div>
+				<div class="has-text-centered mt-2 mb-4 error-form">
+					{{ form_errors(form.sousRayon) }}
+				</div>
+
+				<div class="form-product mt-6">
+					{{ form_label(form.price) }}
+					{{ form_widget(form.price) }}
+				</div>
+				<div class="has-text-centered mt-2 mb-4 error-form">
+					{{ form_errors(form.price) }}
+				</div>
+				<div class="form-product mt-6">
+					{{ form_label(form.reference)}}
+					{{ form_widget(form.reference) }}
+				</div>
+				<div class="has-text-centered mt-2 mb-4 error-form">
+					{{ form_errors(form.reference) }}
+				</div>
+			</div>
+
+			<button type="submit" class="my-5 btn-form is-size-6-mobile">
+				Modifier
+			</button>
+			{{ form_end(form) }}
+		</section>
+		{% block footer %}
+			{% include "partials/footer.html.twig" %}
+		{% endblock %}
+
+		<script>
+			var optional = document.querySelector(".optional");
+
+var arrow = document.querySelector(".arrow-optional");
+
+arrow.addEventListener('click', function () {
+
+if (optional.style.display === 'none') {
+optional.style.display = "block";
+if (document.getElementById("block-optional").classList.contains('fa-plus-circle')) {
+
+document.getElementById("block-optional").classList.toggle('fa-minus-circle');
+}
+} else {
+optional.style.display = "none";
+if (document.getElementById("block-optional").classList.contains('fa-minus-circle')) {
+
+document.getElementById("block-optional").classList.toggle('fa-plus-circle');
+}
+
+}
+
+});
+		</script>
+
+
+	{% endblock %}
