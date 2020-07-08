@@ -23,7 +23,7 @@ class RegistrationType extends ApplicationType
             ->add('passwordConfirm',  PasswordType::class, $this->getConfiguration("Confirmation du mot de passe", ""))
             ->add('validate', CheckboxType::class, [
                 'invalid_message' => "Veuillez cocher la case",
-                'label' => 'En s\'inscrivant vous acceptez les conditions générales',
+                'label' => ' ',
                 'required' => true,
             ]);
     }
