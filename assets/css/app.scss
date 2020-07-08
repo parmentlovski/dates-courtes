@@ -17,6 +17,14 @@ sans-serif;
         color: $fontGreyDark;
     }
 }
+.registration {
+
+    .fontGreyHover {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
 
 #text {
     display: none;
@@ -105,8 +113,9 @@ sans-serif;
                 width: 80%;
 
                 @media (max-width: 767px) {
-                    padding: 6px 0;
-                    font-size: 1em;
+                    width: 100%;
+                    padding: 5px 0;
+                    font-size: 0.9em;
                 }
             }
 
@@ -128,11 +137,14 @@ sans-serif;
 // Page de création de compte & de modification des informations
 
 #register,
+#home,
 #user,
 #product,
-#edit {
+#edit,
+#product-index,
+#error {
     margin: auto;
-    width: 70%;
+    width: 80%;
 
     .btn-form {
         border-radius: 11px;
@@ -291,6 +303,15 @@ sans-serif;
     // align le text à gauche pour la premiere question du form d'ajout de produit
     @media (max-width: 767px) {
         text-align: left;
+        display: flex;
+    }
+
+    input {
+        @media (max-width: 767px) {
+            position: absolute;
+            left: 140px;
+            top: -8px;
+        }
     }
 }
 
@@ -317,7 +338,6 @@ sans-serif;
 }
 
 #product-index {
-    width: 95%;
 
     table {
 
@@ -334,6 +354,17 @@ sans-serif;
             }
         }
 
+    }
+}
+
+// a href supprimer le produit 
+.clear-product {
+    width: 20%; 
+    margin:auto; 
+    border-radius: 9999px;
+
+    @media (max-width: 767px) {
+        width: 80%;
     }
 }
 
@@ -359,6 +390,7 @@ sans-serif;
 .arrow-optional {
     background-color: transparent;
     border: none;
+    outline: none;
 }
 
 // fontawesome signe + & - 
@@ -376,12 +408,21 @@ sans-serif;
 
 .flash-notice {
     background-color: $fontGreyDark;
+    border-radius: 20px;
     color: white;
 }
 
 .flash-error {
     background-color: #8B0000;
     color: white;
+
+    a {
+        color: white;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 // supprimer, editer et + infos sur un produit
@@ -403,13 +444,15 @@ sans-serif;
         background-color: $colorBack2 !important;
     } 
 
-    .fa-search {
+    .fa-search,
+    .fa-trash-alt {
         color: white;
 
         &:hover {
             color: #f1f1f1;
         }
     }
+
 }
 
 footer {
