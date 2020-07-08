@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dates Courtes
+{% block title %}Ajout d'un produit
 {% endblock %}
 
 {% block body %}
@@ -110,28 +110,7 @@
 	{% endblock %}
 
 
-	<script>
-		var optional = document.querySelector(".optional");
-
-var arrow = document.querySelector(".arrow-optional");
-
-arrow.addEventListener('click', function () {
-
-if (optional.style.display === 'none') {
-optional.style.display = "block";
-if (document.getElementById("block-optional").classList.contains('fa-plus-circle')) {
-
-document.getElementById("block-optional").classList.toggle('fa-minus-circle');
-}
-} else {
-optional.style.display = "none";
-if (document.getElementById("block-optional").classList.contains('fa-minus-circle')) {
-
-document.getElementById("block-optional").classList.toggle('fa-plus-circle');
-}
-
-}
-
-});
-	</script>
+	{% block javascripts %}
+		{{ encore_entry_script_tags('js/optional') }}
+	{% endblock %}
 {% endblock %}
