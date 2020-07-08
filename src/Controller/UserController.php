@@ -17,7 +17,7 @@ class UserController extends AbstractController
     /**
      *  Affiche et traite le formulaire de modification de profil 
      * 
-     * @Route("/{slug}", name="user_profil")
+     * @Route("/{slug}/{id}", name="user_profil")
      * @IsGranted("ROLE_USER")
      * 
      * @param User $user

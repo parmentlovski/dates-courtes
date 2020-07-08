@@ -4,7 +4,9 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use App\Entity\Product;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -31,12 +33,33 @@ class HomeController extends AbstractController
      /**
      * Page des mentions légales
      * @Route("/mentions-legales", name="app_mentions")
-     * @IsGranted("ROLE_USER")
      * 
      *  @return Response
      */
     public function mentions() {
         return $this->render('home/mentions.html.twig');
+    }
+
+    /**
+     * @Route("/produit/{id}/clear", name="product_clear")
+     * @IsGranted("ROLE_USER")
+     * 
+     * @param Product $product
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
+    public function delete(Product $product, EntityManagerInterface $manager)
+    {
+        $title = $product->getTitle();
+        $manager->remove($product);
+        $manager->flush();
+
+        $this->addFlash(
+            'notice',
+            "Le produit " . $title . " a bien été supprimé"
+        );
+
+        return $this->redirectToRoute("app_home");
     }
 
 }
