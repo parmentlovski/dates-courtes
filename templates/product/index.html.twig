@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dates Courtes
+{% block title %}Voir tout les produits
 {% endblock %}
 
 {% block body %}
@@ -24,7 +24,7 @@
 		<hr>
 
 
-		<div class="has-text-centered mt-6 mb-6 add-product is-size-6-mobile is-size-5 has-text-weight-bold">
+		<div class="has-text-centered my-4 add-product is-size-6-mobile is-size-5 has-text-weight-bold">
 			<a href="{{ path('product_add')}}">Ajouter un produit
 				<i class="fas fa-plus-circle"></i>
 			</a>
@@ -39,7 +39,7 @@
 					<th>Rayon</th>
 					<th>Produit</th>
 					<th>Date</th>
-					<th>Actions</th>
+					<th>Suppr</th>
 				</tr>
 			</thead>
 
@@ -49,12 +49,13 @@
 					{% if (app.user and app.user == product.user) and (product.reserve == false) %}
 						<tr>
 							<td>{{product.rayon}}</td>
-							<td>{{product.title}}</td>
-							<td class="test">{{product.date | date('d/m/Y') }}</td>
-							<td>
-								<a href="{{path('product_edit', { id : product.id })}}">
-									<i class="fas fa-pencil-alt mx-3"></i>
+							<td>{{product.title}}
+								<a href="{{path('product_edit', { id : product.id })}}" class="pl-1">
+									<i class="fas fa-pencil-alt"></i>
 								</a>
+							</td>
+							<td>{{product.date | date('d/m/Y') }}</td>
+							<td class="has-text-centered">
 								<a href="{{path('product_delete', { id : product.id })}}">
 									<i class="fas fa-trash-alt"></i>
 								</a>
@@ -74,7 +75,7 @@
 					<th>Rayon</th>
 					<th>Produit</th>
 					<th>Date</th>
-					<th>Actions</th>
+					<th>Suppr</th>
 				</tr>
 			</thead>
 
@@ -84,18 +85,17 @@
 					{% if (app.user and app.user == product.user) and (product.reserve == true) %}
 						<tr>
 							<td>{{product.rayon}}</td>
-							<td>{{product.title}}</td>
-							<td>{{product.date | date('d/m/Y') }}</td>
-							<td>
-								<a href="{{path('product_edit', { id : product.id })}}">
-									<i class="fas fa-pencil-alt mx-3"></i>
+							<td>{{product.title}}
+								<a href="{{path('product_edit', { id : product.id })}}" class="pl-1">
+									<i class="fas fa-pencil-alt"></i>
 								</a>
+							</td>
+							<td>{{product.date | date('d/m/Y') }}</td>
+							<td class="has-text-centered">
 								<a href="{{path('product_delete', { id : product.id })}}">
 									<i class="fas fa-trash-alt"></i>
 								</a>
 							</td>
-
-
 						</tr>
 					{% endif %}
 				{% endfor %}
@@ -107,5 +107,5 @@
 		{% include "partials/footer.html.twig" %}
 	{% endblock %}
 
-	
+
 {% endblock %}
