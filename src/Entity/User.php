@@ -28,11 +28,6 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $user_id;
-
-    /**
      * @ORM\Column(type="json", nullable=true)
      */
     private $roles = [];
@@ -92,26 +87,14 @@ class User implements UserInterface
         if (empty($this->slug)) {
 
             $slugify =  new Slugify();
-            $this->slug = $slugify->slugify($this->firstName . ' ' . $this->lastName);
+            $this->slug = $slugify->slugify($this->firstName . ' ' . $this->lastName );
+
         }
     }
-
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(int $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
     }
 
     public function getFirstName(): ?string
