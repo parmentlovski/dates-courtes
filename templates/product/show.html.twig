@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dates Courtes
+{% block title %}Voir un produit
 {% endblock %}
 
 {% block body %}
@@ -10,6 +10,13 @@
 	{% include "partials/nav.html.twig" %}
 
 	<section id="product-show">
+
+		<div class="has-text-centered my-6">
+			<a href="{{path('app_home')}}" class="fontGrey fontGreyHover">
+				<i class="fas fa-undo-alt"></i>
+				Retour à l'accueil</a>
+		</div>
+
 		<h1 class="has-text-centered mt-6 is-size-6-mobile is-size-4">
 			<strong>Produit :
 				{{product.title }}</strong>
@@ -34,16 +41,16 @@
 				</span>
 				{{ product.price }}
 				€</li>
-			<li class="my-5">
+			<li class="mt-5">
 				<span class="has-text-weight-bold">Référence :
 				</span>
 				{{ product.reference }}</li>
 		</ul>
 
-		<div class="has-text-centered my-6">
-			<a href="{{path('app_home')}}" class="fontGrey fontGreyHover">
-				<i class="fas fa-undo-alt"></i>
-				Retour à l'accueil</a>
+		<div class="flash-error clear-product my-5 py-2 is-size-6-mobile is-size-5 has-text-centered">
+			<a href="{{path('product_clear', {id : product.id })}}">
+				Supprimer le produit
+			</a>
 		</div>
 
 
