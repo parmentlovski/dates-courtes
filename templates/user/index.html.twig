@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dates Courtes
+{% block title %}Profil
 {% endblock %}
 
 {% block body %}
@@ -68,6 +68,8 @@
 			{{ form_end(form) }}
 		</div>
 
+		<p class="has-text-centered my-4">Vous souhaitez supprimer votre compte ? Faites la demande via le <a href="#" class="fontGrey fontGreyHover">formulaire de contact</a></p>
+
 
 	</section>
 
@@ -77,30 +79,7 @@
 	{% endblock %}
 
 
-	<script>
-
-		const inputs = document.querySelectorAll('input');
-
-for (let i = 0; i < inputs.length; i++) {
-
-let field = inputs[i];
-
-// Si le form renvoie une erreur il faut que les labels des champs restent au dessus du texte
-if (field.value != "") {
-field.parentNode.classList.add('animation');
-}
-
-// Dès que l'user écrit le label doit passer au dessus
-field.addEventListener('input', (e) => { // console.log(e.target.value);
-if (e.target.value != "") {
-e.target.parentNode.classList.add('animation');
-} else if (e.target.value == "") {
-e.target.parentNode.classList.remove('animation');
-}
-});
-
-
-}
-	</script>
-
+{% block javascripts %}
+	{{ encore_entry_script_tags('js/app') }}
+{% endblock %}
 {% endblock %}
