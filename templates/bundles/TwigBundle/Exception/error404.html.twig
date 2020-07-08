@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dates Courtes
+{% endblock %}
+
+{% block body %}
+
+	{% include "partials/header.html.twig" %}
+
+	{% include "partials/nav.html.twig" %}
+
+	<section id="error">
+	
+        <h1>Page non trouvée</h1>
+
+          <p>
+       La requête n'a pas plus être chargée. Vérifiez votre url ou
+        <a href="{{ path('app_home') }}" class="fontGrey fontGreyHover">retournez à l'accueil</a>.
+    </p>
+	</section>
+
+	{% block footer %}
+		{% include "partials/footer.html.twig" %}
+	{% endblock %}
+
+{% endblock %}
