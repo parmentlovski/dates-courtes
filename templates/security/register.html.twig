@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription à dates courtes
+{% block title %}Inscription à Dates Courtes
 {% endblock %}
 
 
@@ -55,7 +55,13 @@
 			{{ form_errors(form.passwordConfirm) }}
 		</div>
 		<div class="has-text-centered registration">
-			{{ form_row(form.validate) }}
+			<a href="{{path('app_mentions')}}"  target="_blank" class="fontGrey fontGreyHover">
+				{# {{ form_label(form.validate) }} #}
+				En s'inscrivant vous acceptez les conditions générales
+			</a>
+				{{ form_label(form.validate, '' )}}
+				{{ form_widget(form.validate) }}
+
 		</div>
 		<div class="has-text-centered mt-2 mb-4 error-form">
 			{{ form_errors(form.validate) }}
@@ -81,29 +87,7 @@
 
 </section>
 
-<script>
-	console.log("cocou");
 
-const inputs = document.querySelectorAll('input');
-
-for (let i = 0; i < inputs.length; i++) {
-
-let field = inputs[i];
-
-// Si le form renvoie une erreur il faut que les labels des champs restent au dessus du texte
-if (field.value != "") {
-field.parentNode.classList.add('animation');
-}
-
-// Dès que l'user écrit le label doit passer au dessus
-field.addEventListener('input', (e) => { // console.log(e.target.value);
-if (e.target.value != "") {
-e.target.parentNode.classList.add('animation');
-} else if (e.target.value == "") {
-e.target.parentNode.classList.remove('animation');
-}
-});
-
-
-}
-</script>{% endblock %}
+{% block javascripts %}
+	{{ encore_entry_script_tags('js/app') }}
+{% endblock %}{% endblock %}
