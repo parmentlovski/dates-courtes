@@ -11,12 +11,19 @@
 
 			<form method="post">
 
-				<h1 class="mb-6 is-size-1 is-size-3-mobile has-text-centered">
+				<h1 class="mb-3 is-size-1 is-size-3-mobile has-text-centered">
 					<i class="far fa-clock"></i>
 					Date<span class="fontGrey">s</span>
 					courte<span class="fontGrey">s</span>
 				</h1>
 
+				<div class="columns is-mobile my-5 ">
+					{% for message in app.flashes('notice') %}
+						<div class="flash-notice column is-10 is-offset-1 py-4 is-size-6-mobile is-size-5 has-text-centered">
+							{{ message }}
+						</div>
+					{% endfor %}
+				</div>
 
 				<div class="mt-6 has-text-centered">
 					<label for="inputEmail"></label>
@@ -31,21 +38,21 @@
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{#
-																								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																								        See https://symfony.com/doc/current/security/remember_me.html
-																								
-																								        <div class="checkbox mb-3">
-																								            <label>
-																								                <input type="checkbox" name="_remember_me"> Remember me
-																								            </label>
-																								        </div>
-																								    #}
+																																        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+																																        See https://symfony.com/doc/current/security/remember_me.html
+																																
+																																        <div class="checkbox mb-3">
+																																            <label>
+																																                <input type="checkbox" name="_remember_me"> Remember me
+																																            </label>
+																																        </div>
+																																    #}
 
 				{% if error %}
 					<div class="has-text-centered">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 
-				<div class="mt-5 has-text-centered">
+				<div class="mt-5 mb-3 has-text-centered">
 
 					<button type="submit">
 						Se connecter
