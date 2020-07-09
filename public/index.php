@@ -13,7 +13,7 @@ if(getenv('APP_ENV') === 'development') {
 }
 $dotenv->required('OTHER_VAR');
 
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+// (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
