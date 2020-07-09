@@ -7,7 +7,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__).'/vendor/autoload.php';
 
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+
+
+(new Dotenv())->bootEnv(dirname(__DIR__));
+
+
+$filePath = rtrim(__DIR__, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR . '.env';
+//both calls are cached so (almost) no performance loss
+if(is_file($filePath) && is_readable($filePath)) {
+    $dotenv->load();
+}
 
 if ($_SERVER['APP_DEBUG']) {
 umask(0000);
