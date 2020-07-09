@@ -5,15 +5,12 @@ use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
+
 require dirname(__DIR__).'/vendor/autoload.php';
 
-$dotenv = new Dotenv\Dotenv();
-if(getenv('APP_ENV') === 'development') {
-    $dotenv->load(__DIR__);
-}
-$dotenv->required('OTHER_VAR');
+(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
-// (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+if (dirname(__DIR__) !== 'production') require('dotenv').config();
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
