@@ -7,29 +7,26 @@ use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__).'/vendor/autoload.php';
 
-
-
-(new Dotenv())->bootEnv(dirname(__DIR__));
-
-
-$filePath = rtrim(__DIR__, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR . '.env';
-//both calls are cached so (almost) no performance loss
-if(is_file($filePath) && is_readable($filePath)) {
-    $dotenv->load();
+$dotenv = new Dotenv\Dotenv();
+if(getenv('APP_ENV') === 'development') {
+    $dotenv->load(__DIR__);
 }
+$dotenv->required('OTHER_VAR');
+
+(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
 if ($_SERVER['APP_DEBUG']) {
-umask(0000);
+    umask(0000);
 
-Debug::enable();
+    Debug::enable();
 }
 
 if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? false) {
-Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);
+    Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);
 }
 
 if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
-Request::setTrustedHosts([$trustedHosts]);
+    Request::setTrustedHosts([$trustedHosts]);
 }
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
