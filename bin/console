@@ -20,6 +20,7 @@ if (!isset($_SERVER['APP_ENV'])) {
         throw new \RuntimeException('You need to define environment variables for configuration or add "symfony/dotenv" as a Composer dependency');
     }
     (new Dotenv())->load(__DIR__.'/../.env');
+    (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 }
 $input = new ArgvInput();
 if (null !== $env = $input->getParameterOption(['--env', '-e'], null, true)) {
@@ -29,8 +30,6 @@ if (null !== $env = $input->getParameterOption(['--env', '-e'], null, true)) {
 if ($input->hasParameterOption('--no-debug', true)) {
     putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
 }
-
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
