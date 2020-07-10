@@ -33,10 +33,7 @@ putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
 
 if ($_SERVER['APP_DEBUG']) {
 umask(0000);
-
-if (class_exists(Debug::class)) {
 Debug::enable();
-}
 }
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
