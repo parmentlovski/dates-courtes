@@ -24,15 +24,8 @@
     "js/dates": {
       "js": [
         "/build/runtime.js",
-        "/build/vendors~js/dates~js/reserves.js",
+        "/build/vendors~js/dates.js",
         "/build/js/dates.js"
-      ]
-    },
-    "js/reserves": {
-      "js": [
-        "/build/runtime.js",
-        "/build/vendors~js/dates~js/reserves.js",
-        "/build/js/reserves.js"
       ]
     }
   }

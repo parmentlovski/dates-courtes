@@ -4,7 +4,6 @@
   "build/js/app.js": "/build/js/app.js",
   "build/js/dates.js": "/build/js/dates.js",
   "build/js/optional.js": "/build/js/optional.js",
-  "build/js/reserves.js": "/build/js/reserves.js",
   "build/runtime.js": "/build/runtime.js",
-  "build/vendors~js/dates~js/reserves.js": "/build/vendors~js/dates~js/reserves.js"
+  "build/vendors~js/dates.js": "/build/vendors~js/dates.js"
 }
