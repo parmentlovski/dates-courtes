@@ -26,6 +26,7 @@ Encore
     // .addEntry('js/app', './assets/js/optional.js')
     .addEntry('css/app', './assets/css/app.scss')
 
+    .addEntry('js/script', './assets/js/script.js')
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/optional', './assets/js/optional.js')
     .addEntry('js/dates', './assets/js/dates.js')
@@ -76,3 +77,4 @@ Encore
 ;
 
 module.exports = Encore.getWebpackConfig();
+
