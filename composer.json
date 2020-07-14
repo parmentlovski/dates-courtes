@@ -68,7 +68,8 @@
             "@auto-scripts"
         ],
         "compile": [
-            "php bin/console doctrine:database:import dates.sql" 
+            "php bin/console doctrine:database:import dates.sql",
+            "php bin/console doctrine:schema:update --force" 
         ]
     },
     "conflict": {
