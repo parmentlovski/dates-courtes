@@ -68,8 +68,7 @@
             "@auto-scripts"
         ],
         "compile": [
-            "php bin/console doctrine:migrations:migrate",
-            "php bin/console doctrine:database:import date.sql" 
+            "php bin/console doctrine:database:import dates.sql" 
         ]
     },
     "conflict": {
