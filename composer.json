@@ -69,7 +69,7 @@
         ],
         "compile": [
             "php bin/console doctrine:database:import dates.sql",
-            "php bin/console generate:doctrine:entities"
+            "php bin/console doctrine:execute:entities"
         ]
     },
     "conflict": {
