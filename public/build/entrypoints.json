@@ -9,6 +9,12 @@
         "/build/css/app.css"
       ]
     },
+    "js/script": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/script.js"
+      ]
+    },
     "js/app": {
       "js": [
         "/build/runtime.js",
