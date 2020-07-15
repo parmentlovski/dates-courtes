@@ -29,7 +29,7 @@
 					<label for="inputEmail"></label>
 					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email" required autofocus>
 				</div>
-				<div class="my-5 has-text-centered">
+				<div class="mt-5 mb-4 has-text-centered">
 					<label for="inputPassword"></label>
 					<input type="password" name="password" id="inputPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" required>
 				</div>
@@ -37,22 +37,16 @@
 				<input
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-				{#
-																																								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-																																								        See https://symfony.com/doc/current/security/remember_me.html
-																																								    #}
-
-
-				<div class="has-text-centered checkbox">
-					   <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+				<div id="check">
   					   <label for="remember_me">Se souvenir de moi</label>
+					   <input type="checkbox" id="remember_me" class="ml-2" name="_remember_me"/>
 				</div>
 
 				{% if error %}
 					<div class="has-text-centered">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 
-				<div class="mt-3 mb-3 has-text-centered">
+				<div class="mt-4 mb-3 has-text-centered">
 
 					<button type="submit">
 						Se connecter

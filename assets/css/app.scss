@@ -17,6 +17,7 @@ sans-serif;
         color: $fontGreyDark;
     }
 }
+
 .registration {
 
     .fontGreyHover {
@@ -110,6 +111,16 @@ sans-serif;
                 border-color: transparent;
                 border-radius: 9999px;
                 padding: 3px 0;
+
+                @media (max-width: 767px) {
+                    padding: 5px 0;
+                    font-size: 0.9em;
+                }
+            }
+
+            #inputEmail,
+            #inputPassword,
+            button {
                 width: 80%;
 
                 @media (max-width: 767px) {
@@ -118,6 +129,22 @@ sans-serif;
                     font-size: 0.9em;
                 }
             }
+
+            #check {
+                display: flex; 
+                flex:direction; 
+                justify-content:center; 
+                align-items:center;
+                
+                #remember_me {
+                    @media (max-width: 767px) {
+                        cursor: pointer;
+                        display: inline-block;
+                    }
+                }
+            }
+
+          
 
             input {
                 text-align: center;
@@ -359,8 +386,8 @@ sans-serif;
 
 // a href supprimer le produit 
 .clear-product {
-    width: 20%; 
-    margin:auto; 
+    width: 20%;
+    margin: auto;
     border-radius: 9999px;
 
     @media (max-width: 767px) {
@@ -436,18 +463,21 @@ sans-serif;
     }
 }
 
-.trash { // Date inférieure à 30 jours
+.trash {
+    // Date inférieure à 30 jours
     background-color: #8B0000;
     color: white;
 }
 
-.alert { // Date supérieur à 30 jours et inférieure à 60 jours
+.alert {
+    // Date supérieur à 30 jours et inférieure à 60 jours
     background-color: #FFC400;
     color: white;
 }
 
 .trash,
 .alert {
+
     .fa-search,
     .fa-trash-alt {
         color: white;
@@ -459,7 +489,7 @@ sans-serif;
 
     &:hover {
         background-color: $colorBack2 !important;
-    } 
+    }
 }
 
 footer {
