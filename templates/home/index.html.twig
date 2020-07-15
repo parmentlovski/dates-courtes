@@ -43,22 +43,23 @@
 
 			<tbody class="content">
 
-				{% for product in products %}
-					{% if (app.user and app.user == product.user) and (product.reserve == false) %}
-						<tr>
-							<td>{{product.rayon}}</td>
-							<td>{{product.title}}
-								<a href="{{path('product_show', { id : product.id })}}" class="pl-1">
-									<i class="fas fa-search"></i>
-								</a>
-							</td>
-							<td class="dates">{{product.date | date('d/m/Y') }}</td>
-							<td class="has-text-centered">
-								<a href="{{path('product_clear', { id : product.id })}}">
-									<i class="fas fa-trash-alt"></i>
-								</a>
-							</td>
-						</tr>
+				{% for rayon in rayons %}
+					{% if (app.user and app.user == rayon.user) and (rayon.reserve == false) %}
+
+							<tr>
+								<td>{{rayon.rayon}}</td>
+								<td>{{rayon.title}}
+									<a href="{{path('product_show', { id : rayon.id })}}" class="pl-1">
+										<i class="fas fa-search"></i>
+									</a>
+								</td>
+								<td class="rayons">{{rayon.date | date('d/m/Y') }}</td>
+								<td class="has-text-centered">
+									<a href="{{path('product_clear', { id : rayon.id })}}">
+										<i class="fas fa-trash-alt"></i>
+									</a>
+								</td>
+							</tr>
 					{% endif %}
 				{% endfor %}
 			</tbody>
@@ -79,18 +80,18 @@
 
 			<tbody class="content">
 
-				{% for product in products %}
-					{% if (app.user and app.user == product.user) and (product.reserve == true) %}
+				{% for reserve in reserves %}
+					{% if (app.user and app.user == reserve.user) and (reserve.reserve == true) %}
 						<tr>
-							<td>{{product.rayon}}</td>
-							<td>{{product.title}}
-								<a href="{{path('product_show', { id : product.id })}}" class="pl-1">
+							<td>{{reserve.rayon}}</td>
+							<td>{{reserve.title}}
+								<a href="{{path('product_show', { id : reserve.id })}}" class="pl-1">
 									<i class="fas fa-search"></i>
 								</a>
 							</td>
-							<td class="reserves">{{product.date | date('d/m/Y') }}</td>
+							<td class="reserves">{{reserve.date | date('d/m/Y') }}</td>
 							<td class="has-text-centered">
-								<a href="{{path('product_clear', { id : product.id })}}">
+								<a href="{{path('product_clear', { id : reserve.id })}}">
 									<i class="fas fa-trash-alt"></i>
 								</a>
 							</td>

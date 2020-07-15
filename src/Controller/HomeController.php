@@ -26,7 +26,8 @@ class HomeController extends AbstractController
     {
 
         return $this->render('home/index.html.twig', [
-            'products' => $productRepo->findBy([], ['date' => 'ASC'],20)
+            'rayons' => $productRepo->findBy(['reserve' => false,], ['date' => 'ASC' ], 20),
+            'reserves' => $productRepo->findBy(['reserve' => true,], ['date' => 'ASC'], 20)
         ]);
     }
 

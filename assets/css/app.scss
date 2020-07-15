@@ -436,14 +436,18 @@ sans-serif;
     }
 }
 
-.trash {
+.trash { // Date inférieure à 30 jours
     background-color: #8B0000;
     color: white;
+}
 
-    &:hover {
-        background-color: $colorBack2 !important;
-    } 
+.alert { // Date supérieur à 30 jours et inférieure à 60 jours
+    background-color: #FFC400;
+    color: white;
+}
 
+.trash,
+.alert {
     .fa-search,
     .fa-trash-alt {
         color: white;
@@ -453,6 +457,9 @@ sans-serif;
         }
     }
 
+    &:hover {
+        background-color: $colorBack2 !important;
+    } 
 }
 
 footer {
