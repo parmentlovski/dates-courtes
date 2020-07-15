@@ -46,7 +46,13 @@ class ProductType extends ApplicationType
                     'currency' => null
                 ]
             ))
-            ->add('date', DateType::class, $this->getConfiguration("Date de péremption ?", "01/01/2021"));
+            ->add('date', DateType::class, $this->getConfiguration(
+                "Date de péremption ?", "01/01/2021",
+                [
+                    'widget' => 'choice',
+                    'years' => range(date('Y'), date('Y')+2)
+                ]
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
