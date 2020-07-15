@@ -20,6 +20,12 @@ security:
             security: false
        
         main:
+
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /login
+                
             pattern: ^/
             anonymous: true
             provider: in_database
