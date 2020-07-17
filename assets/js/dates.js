@@ -5,79 +5,45 @@ var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
 var yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
-
 var date2 = new Date(today);
 
+// Dates des produits
+        var rayons = document.querySelectorAll('.rayons');
+        var reserves = document.querySelectorAll('.reserves');
 
-// Dates des produits rayons
-        var dates = document.querySelectorAll('.rayons');
-        dates.forEach(date => {
+        // Pour éviter l'erreur .concat is not function 
+        var array1 = [...rayons];
+        var array2 = [...reserves];
 
-        // Calcul date de l'input
+        // Additionne les deux tableaux 
+        var dates = array1.concat(array2);
 
+        dates.forEach(date =>{
+        
+    // Calcul date de l'input
     var dateString = date.innerHTML;
-
     var dateParts = dateString.split("/");
+
     // month is 0-based, that's why we need dataParts[1] - 1
     var dateObject = new Date(+ dateParts[2], dateParts[1] - 1, + dateParts[0]);
     var date1 = new Date(dateObject.toString());
     
-    
-        // To calculate the time difference of two dates
+    // To calculate the time difference of two dates
     var Difference_In_Time = date1.getTime() - date2.getTime();
     // To calculate the no. of days between two dates
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     // To display the final no. of days (result)
     // console.log("Total number of days between dates  <br>" + date1 + "<br> and <br>" + date2 + " is: <br> " + Difference_In_Days);
     
-
         if (Difference_In_Days <= 30) {
-        // console.log("oooh va jeter ton produit");
-        // for (let i = 0; i < lignes.length; i++) {
         date.parentNode.classList.toggle("trash");
-        // }
         } 
-        else { 
-            // console.log("Tout est bon");
-        // for (let i = 0; i < lignes.length; i++) {
-        date.parentNode.classList.remove("trash");
-        // }
-        }
-        });
-
-
-// Dates des produits réserves
-        var reserves = document.querySelectorAll('.reserves');
-        reserves.forEach(date => {
-
-
-        var dateString = date.innerHTML;
-        // console.log(dateString);
-        var dateParts = dateString.split("/");
-        // month is 0-based, that's why we need dataParts[1] - 1
-        var dateObject = new Date(+ dateParts[2], dateParts[1] - 1, + dateParts[0]);
-        var date1 = new Date(dateObject.toString());
-
-
-        // To calculate the time difference of two dates
-        var Difference_In_Time = date1.getTime() - date2.getTime();
-        // To calculate the no. of days between two dates
-        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-        // To display the final no. of days (result)
-
-        if (Difference_In_Days <= 30) {
-        // console.log("oooh va jeter ton produit");
-        // for (let i = 0; i < lignes.length; i++) {
-        date.parentNode.classList.toggle("trash");
-        // }
-        } 
-        else if (Difference_In_Days > 30 && Difference_In_Days <= 60){
+        
+        else if (Difference_In_Days > 30 && Difference_In_Days <= 60 && date.className === "reserves"){
             date.parentNode.classList.toggle("alert");
         }
+
         else { 
-            // console.log("Tout est bon");
-        // for (let i = 0; i < lignes.length; i++) {
-        date.parentNode.classList.remove("trash");
-        // }
+            date.parentNode.classList.remove("trash");
         }
-        });
+    });
