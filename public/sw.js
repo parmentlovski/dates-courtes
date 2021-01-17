@@ -1,7 +1,7 @@
 // sw.js
 self.addEventListener('install', e => {
 
-  console.log("coucou toi");
+  console.log("coucou toi ca va ");
 
     e.waitUntil(
       // Après l'installation du service worker,
