@@ -12,7 +12,7 @@
 			"type":"image/png"
 		}
 	],
-	"start_url": "https://test-pwa-dates.herokuapp.com/login",
+	"start_url": "/sw.js",
 	"display": "standalone",
 	"background_color": "#626160",
 	"theme_color": "#626160"
