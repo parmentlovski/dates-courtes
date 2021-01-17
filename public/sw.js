@@ -34,7 +34,7 @@ self.addEventListener("install", function(event) {
       caches.open("sw-cache").then(function(cache) {
         console.log("coucou1");
           // cache any static files that make up the application shell
-          return cache.add("index.php");
+          return cache.add("/templates/base.html.twig");
       })
   );
 });
