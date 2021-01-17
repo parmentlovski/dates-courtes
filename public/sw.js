@@ -74,7 +74,7 @@ self.addEventListener('fetch', function(event) {
               return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
                 .then(function(cache) {
                   console.log("coucou7");
-                  return cache.match('/templates/home/index.html.twig');
+                  return cache.match('/');
                 });
             });
         }
