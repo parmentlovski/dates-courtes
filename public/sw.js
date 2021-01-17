@@ -40,16 +40,20 @@ self.addEventListener("install", function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  console.log("coucou3");
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
         if (response) {
-          return response;     // if valid response is found in cache return it
+          console.log("coucou4");
+          return response;  // if valid response is found in cache return it
         } else {
           return fetch(event.request)     //fetch from internet
             .then(function(res) {
+              console.log("coucou5");
               return caches.open(CACHE_DYNAMIC_NAME)
                 .then(function(cache) {
+                  console.log("coucou6");
                   cache.put(event.request.url, res.clone());    //save the response for future
                   return res;   // return the fetched data
                 })
@@ -57,6 +61,7 @@ self.addEventListener('fetch', function(event) {
             .catch(function(err) {       // fallback mechanism
               return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
                 .then(function(cache) {
+                  console.log("coucou7");
                   return cache.match('/templates/home/index.html.twig');
                 });
             });
