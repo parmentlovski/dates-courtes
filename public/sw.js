@@ -34,19 +34,7 @@ self.addEventListener("install", function(event) {
       caches.open("sw-cache").then(function(cache) {
         console.log("coucou1");
           // cache any static files that make up the application shell
-          return cache.addAll([
-            '/',
-            '/templates/base.html.twig',
-            '/templates/home/index.html.twig',
-            '/templates/security/login.html.twig',
-            '/public/build/css/app.css',
-            '/public/build/css/app.js',
-            '/public/img/favicon.ico',
-            '/public/build/js/script.js',
-            '/public/build/js/dates.js',
-            '/public/build/js/app.js',
-            '/public/build/js/optional.js'
-          ]);
+          return cache.add("/");
       })
   );
 });
@@ -74,7 +62,7 @@ self.addEventListener('fetch', function(event) {
               return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
                 .then(function(cache) {
                   console.log("coucou7");
-                  return cache.match('/');
+                  return cache.match('/templates/home/index.html.twig');
                 });
             });
         }
