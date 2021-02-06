@@ -4,7 +4,31 @@
 {% endblock %}
 
 {% block body %}
+<script>
+Quagga.init({
+    inputStream : {
+        name : "Live",
+        type : "LiveStream",
+         // Or '#yourElement' (optional)
+        target: document.querySelector('#barcode-scanner') 
+    },
+    decoder : {
+        readers : ['ean_reader','ean_8_reader']
+    }
+}, function(err) {
+    if (err) {
+        console.log(err);
+        return
+    }
+    console.log("Initialization finished. Ready to start");
+    Quagga.start();
+});
+Quagga.onDetected(function(result){
+	var last_code = result.codeResult.code; 
+	Quagga.stop();
+})
 
+</script>
 	<section id="login">
 
 		<div class="box-login">
@@ -34,12 +58,11 @@
 					<input type="password" name="password" id="inputPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" required>
 				</div>
 
-				<input
-				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				<div id="check">
-  					   <label for="remember_me">Se souvenir de moi</label>
-					   <input type="checkbox" id="remember_me" class="ml-2" name="_remember_me"/>
+					<label for="remember_me">Se souvenir de moi</label>
+					<input type="checkbox" id="remember_me" class="ml-2" name="_remember_me"/>
 				</div>
 
 				{% if error %}
@@ -54,6 +77,28 @@
 				</div>
 
 			</form>
+
+			<button id="get-access">Autoriser la caméra</button>
+<video autoplay style="height: 180px; width: 240px;"></video>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+
+	<div id="barcode-scanner"></div>
+
+	{# <button id="takePhoto">Grab video</button>
+<video autoplay style="height: 180px; width: 240px;"></video> #}
+	
+			{# <button id="grabFrame">Prendre une photo</button>
+			<video autoplay style="height: 180px; width: 240px;"></video>
+			<canvas style="height: 180px; width: 240px;"></canvas> #}
+			{# <button id="takePhoto">Take a second photo</button>
+			<canvas>
+			<img>
+			</canvas>
+			<img> #}
+
+
+
 			{% if app.user %}
 				<div class="mt-6 has-text-centered">
 					Vous êtes connecté avec
