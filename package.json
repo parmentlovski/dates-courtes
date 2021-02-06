@@ -1,12 +1,13 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.30.0",
+    "@symfony/webpack-encore": "^1.0.3",
     "core-js": "^3.0.0",
     "fibers": "^5.0.0",
     "node-sass": "^4.14.1",
     "regenerator-runtime": "^0.13.2",
     "sass": "^1.26.10",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.1",
+    "webpack": "^5.19.0",
     "webpack-notifier": "^1.6.0"
   },
   "license": "UNLICENSED",
@@ -18,6 +19,8 @@
     "build": "encore production --progress"
   },
   "dependencies": {
-    "core-js": "^3.6.5"
+    "@zxing/library": "^0.18.3",
+    "core-js": "^3.6.5",
+    "quagga": "^0.12.1"
   }
 }
