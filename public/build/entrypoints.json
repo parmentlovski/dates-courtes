@@ -12,6 +12,8 @@
     "js/script": {
       "js": [
         "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_engine-v8-version_js-node_modules_core-js_internals_ex-af9ee3.js",
+        "/build/vendors-node_modules_core-js_modules_es_function_name_js-node_modules_core-js_modules_es_prom-1d8f46.js",
         "/build/js/script.js"
       ]
     },
@@ -30,7 +32,8 @@
     "js/dates": {
       "js": [
         "/build/runtime.js",
-        "/build/vendors~js/dates.js",
+        "/build/vendors-node_modules_core-js_internals_engine-v8-version_js-node_modules_core-js_internals_ex-af9ee3.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_concat_js-node_modules_core-js_modules_es_array-3d3272.js",
         "/build/js/dates.js"
       ]
     }
