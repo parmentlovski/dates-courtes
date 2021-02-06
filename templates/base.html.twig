@@ -22,24 +22,60 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap" rel="stylesheet">
 		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+		<script src="https://cdn.rawgit.com/serratus/quaggaJS/0420d5e0/dist/quagga.min.js"></script>
+		<script>
+// 			window.OneSignal = window.OneSignal || [];
+// OneSignal.push(function () {
+// OneSignal.init({
+// appId: "08b45834-e218-4b82-ba0a-b3170aaac803",
+// notifyButton: {
+// enable: true
+// }
+// });
+// });
+var OneSignal = window.OneSignal || [];
+    var initConfig = {
+		appId: "08b45834-e218-4b82-ba0a-b3170aaac803",
+		// requiresUserPrivacyConsent: true,
+        // autoResubscribe: false,
+        notifyButton: {
+            enable: true
+        },
+    };
+    OneSignal.push(function () {
+        OneSignal.SERVICE_WORKER_PARAM = { scope: '/dates-courtes/' };
+        OneSignal.SERVICE_WORKER_PATH = 'dates-courtes/OneSignalSDKWorker.js'
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = 'dates-courtes/OneSignalSDKUpdaterWorker.js'
+        OneSignal.init(initConfig);
+    });
+		</script>
 		{{ encore_entry_link_tags('css/app') }}
 
 		{% block stylesheets %}{% endblock %}
 	</head>
 	<script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log("Service Worker Registered !!"); });
+
+		if ('serviceWorker' in navigator) { // declaring scope manually
+navigator.serviceWorker.register('/sw.js', {scope: '/'}).then((registration) => {
+console.log('Service worker registration succeeded:', registration)
+},
+/*catch*/
+(error) => {
+console.log('Service worker registration failed:', error)
+})
+} else {
+console.log('Service workers are not supported.')
 }
-</script>
+	</script>
 
 	<body>
 		{% block header %}{% endblock %}
 		{% block body %}{% endblock %}
 
 		{% block javascripts %}
-				{{ encore_entry_script_tags('js/script') }}
+			{{ encore_entry_script_tags('js/script') }}
 		{% endblock %}
 
 	</body>
