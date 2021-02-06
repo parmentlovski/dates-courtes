@@ -1,71 +1,15 @@
-// sw.js
-self.addEventListener('install', e => {
-
-  console.log("coucou toi ca va ");
-
-    e.waitUntil(
-      // Après l'installation du service worker,
-      // ouvre un nouveau cache
-      caches.open('mon-cache-pwa').then(cache => {
-        // Ajoute toutes les URLs des éléments à mettre en cache
-
-        console.log("coucou");
-
-        return cache.add("/");
-      })
-    );
-   });
-
-// On install - caching the application shell
-self.addEventListener("install", function(event) {
-  event.waitUntil(
-      caches.open("sw-cache").then(function(cache) {
-        console.log("coucou1");
-          // cache any static files that make up the application shell
-          return cache.add("/");
-      })
-  );
-});
-
-self.addEventListener('fetch', function(event) {
-  console.log("coucou3");
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          console.log("coucou4");
-          return response;  // if valid response is found in cache return it
-        } else {
-          return fetch(event.request)     //fetch from internet
-            .then(function(res) {
-              console.log("coucou5");
-              return caches.open(CACHE_DYNAMIC_NAME)
-                .then(function(cache) {
-                  console.log("coucou6");
-                  cache.put(event.request.url, res.clone());    //save the response for future
-                  return res;   // return the fetched data
-                })
-            })
-            .catch(function(err) {       // fallback mechanism
-              return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
-                .then(function(cache) {
-                  console.log("coucou7");
-                  return cache.match('/templates/home/index.html.twig');
-                });
-            });
-        }
-      })
-  );
-});         
-
-// On network request
-self.addEventListener("fetch", function(event) {
-  event.respondWith(
-      // Try the cache
-      caches.match(event.request).then(function(response) {
-        console.log("coucou2");
-          //If response found return it, else fetch again
-          return response || fetch(event.request);
-      })
-  );
-});
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/*!**********************!*\
+  !*** ./public/sw.js ***!
+  \**********************/
+eval("\nself.addEventListener('install', (e) => {\n  console.log('[Service Worker] Installation');\n});\n\nvar cacheName = 'js13kPWA-v1';\nvar appShellFiles = [\n  '/build/css/app.css',\n  '/build/js/script.js',\n  '/build/js/app.js',\n  '/build/js/dates.js',\n  '/build/js/optional.js',\n  '/build/css/app.js',\n  '/img/clock.png'\n];\n\nself.addEventListener('install', (e) => {\n  console.log('[Service Worker] Installation');\n  e.waitUntil(\n    caches.open(cacheName).then((cache) => {\n          console.log('[Service Worker] Mise en cache globale: app shell et contenu');\n      return cache.addAll(appShellFiles);\n    })\n  );\n});\n\nself.addEventListener('fetch', (e) => {\n  console.log('[Service Worker] Ressource récupérée '+e.request.url);\n});\n\nself.addEventListener('fetch', (e) => {\n  e.respondWith(\n    caches.match(e.request).then((r) => {\n          console.log('[Service Worker] Récupération de la ressource: '+e.request.url);\n      return r || fetch(e.request).then((response) => {\n                return caches.open(cacheName).then((cache) => {\n          console.log('[Service Worker] Mise en cache de la nouvelle ressource: '+e.request.url);\n          cache.put(e.request, response.clone());\n          return response;\n        });\n      });\n    })\n  );\n});\n\nself.addEventListener('activate', (e) => {\n  e.waitUntil(\n    caches.keys().then((keyList) => {\n          return Promise.all(keyList.map((key) => {\n        if(cacheName.indexOf(key) === -1) {\n          return caches.delete(key);\n        }\n      }));\n    })\n  );\n});\n\nself.addEventListener('fetch', function(event) {\n  event.respondWith(\n    caches.match(event.request)\n      .then(function(response) {\n        if (response) {\n          return response;\n        } else {\n          return fetch(event.request)\n            .then(function(res) {\n              return caches.open(cacheName)\n                .then(function(cache) {\n                  cache.put(event.request.url, res.clone());\n                  return res;\n                })\n            })\n            .catch(function(err) {\n                // fallback mechanism\n                // return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)\n                // .then(function(cache) {\n                console.log(\"echec\");\n                return cache.match('/');\n                // });\n            });\n        }\n      })\n  );\n});\n\n\n\n//# sourceURL=webpack:///./public/sw.js?");
+/******/ })()
+;
